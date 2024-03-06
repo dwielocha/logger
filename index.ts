@@ -1,10 +1,10 @@
 Bun.serve({
-  fetch(req: Request) {
+  async fetch(req: Request) {
     console.log("Request received", {
       url: req.url,
       method: req.method,
       headers: JSON.stringify(req.headers),
-      body: JSON.stringify(req.body),
+      body: await req.text(),
     });
 
     return new Response("OK");
